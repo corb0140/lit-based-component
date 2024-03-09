@@ -1,8 +1,8 @@
 import {
   LitElement,
   html,
-  css,
 } from "https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js";
+import { styles } from "./styles.js";
 
 const data = [
   { text: "Buy a burger", complete: false },
@@ -17,77 +17,17 @@ export class TodoItem extends LitElement {
     complete: { type: Boolean },
   };
 
-  static styles = css`
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    li {
-      color: white;
-      background-color: #002642;
-      padding: 1rem;
-      font-size: 1.25rem;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    li:hover {
-      cursor: pointer;
-    }
-
-    .complete {
-      text-decoration: line-through;
-      color: #fff6;
-    }
-
-    .icons-container {
-      display: flex;
-      gap: 1rem;
-    }
-  `;
+  static styles = styles;
 
   constructor() {
     super();
     this.data = data;
   }
 
-  changeCompletionStatus(ev) {
-    console.log(ev.target.parentElement.parentElement.getAttribute("index"));
-
-    // if (ev.target.parentElement.parentElement.classList.contains("complete")) {
-    //   this.complete = true;
-    // } else {
-    //   this.complete = false;
-    // }
-  }
-
   toggleCompleteClass(ev) {
     if (ev.target) {
-      //get index of the item
-      // const index = ev.target.parentElement.parentElement;
-      // console.log(index);
+      ev.target.parentElement.parentElement.classList.toggle("complete");
     }
-
-    // if (ev.target) {
-    //   ev.target.parentElement.parentElement.classList.toggle("complete");
-    //   this.changeCompletionStatus(ev);
-    //   console.log(ev.target.parentElement.parentElement, this.complete);
-    // }
-  }
-
-  toggleImage(ev) {
-    // if (this.complete === true) {
-    //   ev.target.src = "./imgs/cancel.svg";
-    // } else {
-    //   ev.target.src = "./imgs/complete.svg";
-    // }
   }
 
   deleteItem(ev) {
@@ -107,8 +47,8 @@ export class TodoItem extends LitElement {
                   src="./imgs/complete.svg"
                   alt="complete"
                   @click=${(ev) => {
+                    console.log(content.complete);
                     this.toggleCompleteClass(ev);
-                    this.toggleImage(ev);
                   }}
                 />
 
