@@ -39,22 +39,31 @@ export class TodoItem extends LitElement {
       ${this.data.map(
         (content, index) =>
           html`
-            <li>
+            <li class=${content.complete === true ? "complete" : ""}>
               ${index + 1}: ${content.text}
 
               <div class="icons-container">
                 <img
-                  src="./imgs/complete.svg"
-                  alt="complete"
+                  src=${content.complete === false
+                    ? "./imgs/complete.svg"
+                    : "./imgs/cancel.svg"}
+                  alt="complete icon or cancel icon"
                   @click=${(ev) => {
-                    console.log(content.complete);
                     this.toggleCompleteClass(ev);
+
+                    if (ev.target) {
+                      content.complete = !content.complete;
+
+                      ev.target.src = content.complete
+                        ? "./imgs/cancel.svg"
+                        : "./imgs/complete.svg";
+                    }
                   }}
                 />
 
                 <img
                   src="./imgs/delete.svg"
-                  alt="delete"
+                  alt="trash can icon"
                   @click=${(ev) => {
                     this.deleteItem(ev);
                   }}
