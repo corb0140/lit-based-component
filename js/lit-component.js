@@ -38,13 +38,12 @@ export class TodoItem extends LitElement {
           src=${this.complete === false
             ? "./imgs/complete.svg"
             : "./imgs/cancel.svg"}
-          alt="complete or cancel icon"
+          alt=${this.complete === false ? "complete icon" : "cancel icon"}
           @click=${(ev) => {
             this.toggleCompleteClass(ev);
 
             if (ev.target) {
               this.complete = !this.complete;
-              console.log(this.complete);
             }
           }}
         />

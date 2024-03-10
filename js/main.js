@@ -10,18 +10,13 @@ const APP = {
   ],
 
   init: () => {
-    APP.todoList.addEventListener("click", APP.handleItemClick);
-
     APP.buildHtml();
   },
-
-  handleItemClick: (ev) => {},
 
   buildHtml: () => {
     const list = new DocumentFragment();
 
     APP.data.map((content, index) => {
-      console.log(content);
       const todoItem = document.createElement("todo-item");
 
       todoItem.index = index + 1;
