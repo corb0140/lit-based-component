@@ -21,19 +21,14 @@ export class TodoItem extends LitElement {
   }
 
   toggleCompleteClass(ev) {
+    console.log(ev.target.parentElement.parentElement);
     if (ev.target) {
       ev.target.parentElement.parentElement.classList.toggle("complete");
     }
   }
 
-  init() {
-    document.querySelector("ul").addEventListener("click", this.deleteItem);
-  }
-
-  deleteItem(ev) {
-    if (ev.target) {
-      ev.target.remove();
-    }
+  deleteItem() {
+    document.querySelector("ul").removeChild(this);
   }
 
   render() {
@@ -54,7 +49,11 @@ export class TodoItem extends LitElement {
           }}
         />
 
-        <img src="./imgs/delete.svg" alt="trash can icon" @click=${this.init} />
+        <img
+          src="./imgs/delete.svg"
+          alt="trash can icon"
+          @click=${this.deleteItem}
+        />
       </div>
     </li>`;
   }
