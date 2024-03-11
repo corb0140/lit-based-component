@@ -21,9 +21,10 @@ export class TodoItem extends LitElement {
   }
 
   toggleCompleteClass(ev) {
-    console.log(ev.target.parentElement.parentElement);
     if (ev.target) {
       ev.target.parentElement.parentElement.classList.toggle("complete");
+
+      this.complete = !this.complete;
     }
   }
 
@@ -42,10 +43,6 @@ export class TodoItem extends LitElement {
           alt=${this.complete === false ? "complete icon" : "cancel icon"}
           @click=${(ev) => {
             this.toggleCompleteClass(ev);
-
-            if (ev.target) {
-              this.complete = !this.complete;
-            }
           }}
         />
 
