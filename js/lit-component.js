@@ -26,8 +26,14 @@ export class TodoItem extends LitElement {
     }
   }
 
+  init() {
+    document.querySelector("ul").addEventListener("click", this.deleteItem);
+  }
+
   deleteItem(ev) {
-    ev.target.parentElement.parentElement.remove();
+    if (ev.target) {
+      ev.target.remove();
+    }
   }
 
   render() {
@@ -48,11 +54,7 @@ export class TodoItem extends LitElement {
           }}
         />
 
-        <img
-          src="./imgs/delete.svg"
-          alt="trash can icon"
-          @click=${this.deleteItem}
-        />
+        <img src="./imgs/delete.svg" alt="trash can icon" @click=${this.init} />
       </div>
     </li>`;
   }
