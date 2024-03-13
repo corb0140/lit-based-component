@@ -1,7 +1,7 @@
 import "./lit-component.js";
 
 const APP = {
-  todoList: document.querySelector("ul"),
+  todoList: document.getElementById("todo-list"),
   data: [
     { text: "Buy a burger", complete: false },
     { text: "Eat a burger", complete: false },

@@ -29,11 +29,11 @@ export class TodoItem extends LitElement {
   }
 
   deleteItem() {
-    document.querySelector("ul").removeChild(this);
+    this.remove();
   }
 
   render() {
-    return html`<li class=${this.complete === true ? "complete" : ""}>
+    return html` <li class=${this.complete === true ? "complete" : ""}>
       <span>${this.index}: ${this.text}</span>
       <div class="icons-container">
         <img
