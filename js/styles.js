@@ -13,7 +13,6 @@ export const styles = css`
   }
 
   li:hover {
-    cursor: pointer;
   }
 
   .complete {
@@ -23,6 +22,19 @@ export const styles = css`
 
   .icons-container {
     display: flex;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.725rem;
+  }
+
+  .material-icons-outlined {
+    cursor: pointer;
+    font-size: 1.855rem;
+
+    transition: color 0.3s;
+  }
+
+  .material-icons-outlined.delete:hover {
+    color: #840032;
   }
 `;

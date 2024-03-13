@@ -30,7 +30,7 @@ export class TodoItem extends LitElement {
 
   render() {
     return html` <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
         rel="stylesheet"
       />
 
@@ -41,15 +41,17 @@ export class TodoItem extends LitElement {
 
         <div class="icons-container">
           <span
-            class="material-icons"
+            class="material-icons-outlined"
             @click=${(ev) => {
               this.toggleCompleteClass(ev);
             }}
           >
-            ${this.complete === false ? "check_circle" : "cancel"}
+            ${this.complete === false ? "check_box_outline_blank" : "check_box"}
           </span>
 
-          <span class="material-icons" @click=${this.deleteItem}>delete</span>
+          <span class="material-icons-outlined delete" @click=${this.deleteItem}
+            >delete</span
+          >
         </div>
       </li>`;
   }
