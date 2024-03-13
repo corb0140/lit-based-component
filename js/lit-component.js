@@ -42,9 +42,7 @@ export class TodoItem extends LitElement {
         <div class="icons-container">
           <span
             class="material-icons-outlined"
-            @click=${(ev) => {
-              this.toggleCompleteClass(ev);
-            }}
+            @click=${this.toggleCompleteClass}
           >
             ${this.complete === false ? "check_box_outline_blank" : "check_box"}
           </span>

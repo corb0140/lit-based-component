@@ -12,9 +12,6 @@ export const styles = css`
     align-items: center;
   }
 
-  li:hover {
-  }
-
   .complete {
     text-decoration: line-through;
     color: #fff6;
