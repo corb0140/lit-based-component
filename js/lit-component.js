@@ -20,12 +20,8 @@ export class TodoItem extends LitElement {
     this.complete = false;
   }
 
-  toggleCompleteClass(ev) {
-    if (ev.target) {
-      ev.target.parentElement.parentElement.classList.toggle("complete");
-
-      this.complete = !this.complete;
-    }
+  toggleCompleteClass() {
+    this.complete = !this.complete;
   }
 
   deleteItem() {
@@ -33,26 +29,29 @@ export class TodoItem extends LitElement {
   }
 
   render() {
-    return html` <li class=${this.complete === true ? "complete" : ""}>
-      <span>${this.index}: ${this.text}</span>
-      <div class="icons-container">
-        <img
-          src=${this.complete === false
-            ? "./imgs/complete.svg"
-            : "./imgs/cancel.svg"}
-          alt=${this.complete === false ? "complete icon" : "cancel icon"}
-          @click=${(ev) => {
-            this.toggleCompleteClass(ev);
-          }}
-        />
+    return html` <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      />
 
-        <img
-          src="./imgs/delete.svg"
-          alt="trash can icon"
-          @click=${this.deleteItem}
-        />
-      </div>
-    </li>`;
+      <li>
+        <span class=${this.complete === true ? "complete" : ""}
+          >${this.index}: ${this.text}</span
+        >
+
+        <div class="icons-container">
+          <span
+            class="material-icons"
+            @click=${(ev) => {
+              this.toggleCompleteClass(ev);
+            }}
+          >
+            ${this.complete === false ? "check_circle" : "cancel"}
+          </span>
+
+          <span class="material-icons" @click=${this.deleteItem}>delete</span>
+        </div>
+      </li>`;
   }
 }
 
